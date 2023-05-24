@@ -117,5 +117,8 @@
                 </div>
             </section>
         </div>
+
+        <script src = "inc/users.js"></script>
+
     </body>
 </html>

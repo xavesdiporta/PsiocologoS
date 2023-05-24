@@ -57,6 +57,7 @@
         border-radius : 5px ;
         margin-bottom : 10px ;
         border : 1px solid #f5c6cb ;
+        display: none;
     }
 
     .form form .name-details
@@ -132,6 +133,12 @@
         color : #ccc ;
         transform :  translateY(-50%) ;
         cursor : pointer ;
+    }
+
+    .form form .field i.active::before
+    {
+        color : #333 ;
+        content : '\f070' ;
     }
 
     .form .link
@@ -230,6 +237,15 @@
         border : 1px solid #ccc ;
         border-radius : 5px ;
         outline : none ; 
+        opacity : 0 ;
+        pointer-events : none ;
+        transition : all 0.3s ease ;
+    }
+
+    .users .search input.active
+    {
+        opacity : 1 ;
+        pointer-events : auto ;
     }
 
     .users .search button
@@ -239,11 +255,24 @@
         font-size : 17px ;
         border : none ;
         outline : none ;
-        color : #fffaff ;
-        background : #333 ;
+        color : #333;
+        background : #fffaff ;
         border-radius : 0 5px 5px 0 ;
         cursor : pointer ;
+        transition : all 0.3s ease ;
     }
+
+    .users .search button.active
+    {
+        color : #fffaff ;
+        background : #333 ;
+    }
+
+    .users .search button.active i::before
+    {
+        content : '\f00d' ;
+    }
+
 
             /*?  Users.html - CSS Part ---> User List */
 
@@ -414,4 +443,37 @@
         color : #333;
         background : #fffaff ;
         border-radius : 18px 18px 18px 0px ;
+    }
+
+                            /*?   Chat.html - CSS Part ---> write box   */
+
+
+    .chat-area .typing-area
+    {
+        padding : 18px 30px ;
+        display : flex ;
+        justify-content : space-between ;
+    }
+
+    .typing-area input
+    {
+        height : 45px ;
+        width : calc(100% - 58px) ;
+        font-size : 17px ;
+        padding : 0 13px ;
+        border : 1px solid #ccc ;
+        border-radius : 5px 0 0 5px ;
+        outline : none ;
+    }
+
+    .typing-area button
+    {
+        width : 55px ;
+        color : #fffaff ;
+        background : #333 ;
+        font-size : 19px ;
+        border : none ;
+        outline : none ;
+        border-radius : 0 5px 5px 0 ;
+        cursor : pointer ;
     }

@@ -1,0 +1,152 @@
+
+                            /*!         Main.html - CSS Part         */
+
+    *
+    {
+        margin : 0 ;
+        padding : 0 ;
+        box-sizing : border-box ;
+        text-decoration : none ; 
+        font-family : 'Poppins' , sans-serif ;
+    }
+
+    body
+    {
+        display : flex ;
+        align-items : center ;
+        justify-content : center ;
+        min-height : 100vh ;
+        background : #fffaff ;
+    }
+
+    .wrapper
+    {
+        width : 450px ;
+        border-radius : 16px ;
+        box-shadow: 0 0 128px 0 rgba(0,0,0,0.1), 0 32px 64px -48px rgba(0,0,0,0.5) ;
+        background : #fffaff ;
+    }
+
+
+                        /*!   Main.html and Login.html - CSS Part --->  Sign Up and Login Form  */
+
+    .form
+    {
+        padding : 25px 30px ;
+    }
+
+    .form header
+    {
+        font-size : 25px ;
+        font-weight : 600 ;
+        padding-bottom : 10px ;
+        border-bottom : 1px solid #e6e6e6 ;
+    }
+
+    .form form
+    {
+        margin : 20px 0 ;
+    }
+
+    .form form .error-txt
+    {
+        color : #721c24 ;
+        background : #f8d7da ;
+        padding : 10px ;
+        text-align : center ;
+        border-radius : 5px ;
+        margin-bottom : 10px ;
+        border : 1px solid #f5c6cb ;
+    }
+
+    .form form .name-details
+    {
+        display : flex ;
+    }
+
+    .form form .name-details .field:first-child
+    {
+        margin-right : 10px ;
+    }
+
+    .form form .name-details .field:last-child
+    {
+        margin-left : 10px ;
+    }
+
+    .form form .field
+    {
+        display : flex ;
+        position : relative ;
+        margin-bottom : 10px ;
+        flex-direction : column ;
+    }
+
+    .form form .field label
+    {
+        margin-bottom : 2px ;
+        font-size : 14px ;
+        font-weight : 500 ;
+    }
+
+    .form form .field input
+    {
+        outline : none ;
+    }
+
+    .form form .input input
+    {
+        height : 40px ;
+        width : 100% ;
+        font-size : 16px ;
+        padding-left : 5px ;
+        border-radius : 5px ;
+        border : 1px solid #ccc ;
+        outline : none ;
+        transition : .3s ease ;
+    }
+
+    .form form .image input
+    {
+        font-size : 17px ;
+    }
+
+    .form form .button input
+    {
+        margin-top : 13px ;
+        height : 45px ;
+        border : none ;
+        font-size : 17px ;
+        font-weight : 400 ;
+        background : #333 ;
+        color : #fff ;
+        border-radius : 5px ;
+        cursor : pointer ;
+    }
+
+    .form form .field i
+    {
+        position : absolute ;
+        right : 15px ;
+        top : 70% ;
+        color : #ccc ;
+        transform :  translateY(-50%) ;
+        cursor : pointer ;
+    }
+
+    .form .link
+    {
+        text-align :  center ;
+        margin : 10px 0 ;
+        font-size : 17px ;
+    }
+
+    .form .link a
+    {
+        color : #333 ;
+    }
+
+    .form .link a:hover
+    {
+        text-decoration : underline ;
+    }

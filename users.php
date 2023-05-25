@@ -16,7 +16,7 @@
     <!-- body things -->
     <body>
 
-        <div class = "wrapper">
+        <div class = "wrapperUsers">
             <section class = "users">
                 <header>
                     <div class = "content">
@@ -34,11 +34,11 @@
                     <button><i class = "fas fa-search"></i></button>
                 </div>
                 <div class = "users-list">
-                    <a href = "#">
+                    <a href = "#" onclick="openChat('vitor')">
                         <div class = "content">
                             <img src = "img/img.jpg" alt = "">
                             <div class = "details">
-                                <span>Marco</span>
+                                <span>Vitor</span>
                                 <p>This is text message</p>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         <div class = "content">
                             <img src = "img/img.jpg" alt = "">
                             <div class = "details">
-                                <span>Marco</span>
+                                <span>Julieta</span>
                                 <p>This is text message</p>
                             </div>
                         </div>
@@ -117,7 +117,7 @@
                 </div>
             </section>
         </div>
-
+        <div id="chatContent"></div>
         <script src = "inc/users.js"></script>
 
     </body>

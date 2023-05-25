@@ -9,7 +9,13 @@
         text-decoration : none ; 
         font-family : 'Poppins' , sans-serif ;
     }
-
+    #hero{
+        display: flex;
+        min-height : 100vh ;
+        background : #fffaff ;
+        align-items: center;
+        justify-content: center;
+    }
     body
     {
         display : flex ;
@@ -17,12 +23,20 @@
         background : #fffaff ;
     }
 
-    .wrapper
+    .wrapperUsers
     {
         width : 450px ;
         border-radius : 16px ;
         box-shadow : 0 0 128px 0 rgba(0,0,0,0.1), 0 32px 64px -48px rgba(0,0,0,0.5) ;
         background : #fffaff ;
+    }
+
+    .wrapperChat
+    {
+        width : 450px ;
+        border-radius : 16px ;
+        box-shadow : 0 0 128px 0 rgba(0,0,0,0.1), 0 32px 64px -48px rgba(0,0,0,0.5) ;
+        background : #fffaff ;   
     }
 
 

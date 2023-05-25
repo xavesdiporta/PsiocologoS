@@ -14,9 +14,9 @@
 
 
     <!-- body things -->
-    <body>
+    <body id="hero">
 
-        <div class = "wrapper">
+        <div class = "wrapperChat">
             <section class = "chat-area">
                 <header>
                     <a href="#" class = "back-icon"><i class = "fas fa-arrow-left"></i></a>

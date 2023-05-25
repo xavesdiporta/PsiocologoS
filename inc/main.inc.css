@@ -361,6 +361,13 @@
 
                             /*!   Chat.html - CSS Part   */
 
+    .chat-area
+    {
+        position : relative ;
+        height : 100% ;
+        background : #fffaff ;
+    }
+    
     .chat-area header
     {
         display : flex ;

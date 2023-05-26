@@ -2,7 +2,7 @@
 <?php
 
     session_start();
-    include_once 'conect.php';
+    include_once 'connect.php';
 
     $fname = mysqli_real_escape_string($con, $_POST['fname']);
     $lname = mysqli_real_escape_string($con, $_POST['lname']);

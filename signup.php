@@ -19,7 +19,7 @@
         <div class = "wrapper">
             <section class = "form signup">
                 <header>Realtime Chat App</header>
-                <form action = "#"  enctype="multipart/form-data">
+                <form action = "signup.php"  enctype="multipart/form-data">
                     <div class = "error-txt"></div>
                     <div class = "name-details">
                         <div class = "field input">

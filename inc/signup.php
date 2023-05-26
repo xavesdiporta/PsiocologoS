@@ -42,9 +42,14 @@
                             $status = "Active now"; // once user signed up then his status will be active now"
                             $random_id = rand(time(), 10000000); // creating random id for user
 
+
+
+                        //encrypt password, para fazer login basta comparar again usando password_verify($password, $hashedPassword)
+                        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
                             // lets insert all user data inside table
                             $sql2 = mysqli_query($con, "INSERT INTO users (unique_id, fname, lname, email, password, img, status)
-                                                        VALUES ({$random_id}, '{$fname}', '{$lname}', '{$email}', '{$pwd}', '{$new_img_name}', '{$status}')");
+                                                        VALUES ({$random_id}, '{$fname}', '{$lname}', '{$email}', '{$hashedPassword}', '{$new_img_name}', '{$status}')");
 
                             if($sql2){
                                 $sql3 = mysqli_query($con, "SELECT * FROM users WHERE email = '{$email}'");

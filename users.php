@@ -1,3 +1,6 @@
+<?php
+require 'verify.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +29,7 @@
                             <p>Active Now</p>
                         </div>
                     </div>
-                    <a href = "#" class = "logout">Logout</a>
+                    <a href = "logout.php" class = "logout">Logout</a>
                 </header>
                 <div class = "search">
                     <span class = "text">Select an user to start chat</span>
@@ -39,7 +42,7 @@
                             <img src = "img/img.jpg" alt = "">
                             <div class = "details">
                                 <span>Vitor</span>
-                                <p>This is text message</p>
+                                <p>O meu pai é padre</p>
                             </div>
                         </div>
                         <div class = "status-dot"><i class = "fas fa-circle"></i></div>
@@ -48,8 +51,8 @@
                         <div class = "content">
                             <img src = "img/img.jpg" alt = "">
                             <div class = "details">
-                                <span>Julieta</span>
-                                <p>This is text message</p>
+                                <span>Pilas</span>
+                                <p>No money no funny</p>
                             </div>
                         </div>
                         <div class = "status-dot"><i class = "fas fa-circle"></i></div>
@@ -58,8 +61,8 @@
                         <div class = "content">
                             <img src = "img/img.jpg" alt = "">
                             <div class = "details">
-                                <span>Marco</span>
-                                <p>This is text message</p>
+                                <span>Vasco</span>
+                                <p>1/4 para dois</p>
                             </div>
                         </div>
                         <div class = "status-dot"><i class = "fas fa-circle"></i></div>
@@ -68,18 +71,18 @@
                         <div class = "content">
                             <img src = "img/img.jpg" alt = "">
                             <div class = "details">
-                                <span>Marco</span>
-                                <p>This is text message</p>
+                                <span>Antonino</span>
+                                <p>Quem não mama não chora</p>
                             </div>
                         </div>
                         <div class = "status-dot"><i class = "fas fa-circle"></i></div>
                     </a>
                     <a href = "#">
                         <div class = "content">
-                            <img src = "img/img.jpg" alt = "">
+                            <img src = "img/babyshark.jpg" alt = "">
                             <div class = "details">
-                                <span>Marco</span>
-                                <p>This is text message</p>
+                                <span>Velez</span>
+                                <p>Caça-Kakayas</p>
                             </div>
                         </div>
                         <div class = "status-dot"><i class = "fas fa-circle"></i></div>

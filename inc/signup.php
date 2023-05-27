@@ -11,7 +11,7 @@
 
     // Check for empty fields
 
-    if (!empty($username) && !empty($pwd)) {
+    if (!empty($username) && !empty($pwd) && !empty($_FILES['image'])) {
         $stmt = mysqli_prepare($con, "SELECT username FROM users WHERE username = ?" );
         mysqli_stmt_bind_param($stmt, "s", $username);
         mysqli_stmt_bind_result($stmt, $result);
@@ -23,7 +23,6 @@
             {
                 echo "$username - This username already exists!";
             }else{
-                if(isset($_FILES['image'])){
                     $img_name = $_FILES['image']['name']; // getting user uploaded img name
                     $img_type = $_FILES['image']['type']; // getting user uploaded img type
                     $tmp_name = $_FILES['image']['tmp_name']; // this temporary name is used to save/move file in our folder
@@ -46,24 +45,11 @@
                             $sql2 = mysqli_query($con, "INSERT INTO users (username,password)
                                                         VALUES ('{$username}','{$hashedPassword}'");
 
-                            if($sql2){
-                                $sql3 = mysqli_query($con, "SELECT * FROM users WHERE email = '{$email}'");
-                                if(mysqli_num_rows($sql3) > 0){
-                                    $row = mysqli_fetch_assoc($sql3);
-                                    $_SESSION['unique_id'] = $row['unique_id']; // using this session we used user unique_id in other php file
-                                    echo "success";
-                                }
-                            }else{
-                                echo "Something went wrong!";
-                            }
                         }
 
                     } else{
                         echo "This extension file not allowed, Please choose a JPG or PNG file!";
                     }
-                }else{
-                    echo "Please select an image file!";
-                }
             }
        
 

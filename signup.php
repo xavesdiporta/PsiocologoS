@@ -19,17 +19,17 @@
         <div class = "wrapperForm" id="wrapperForm">
             <section class = "form signup">
                 <header>Realtime Chat App</header>
-                <form action = "inc/signup.php"  enctype="multipart/form-data">
+                <form action ="inc/signup.php" method="post" enctype="multipart/form-data">
                     <div class = "error-txt"></div>
                     <div class = "name-details">
                         <div class = "field input">
-                            <label>username</label>
-                            <input type = "text" name = "username" placeholder = "First name" required>
+                            <label>Username</label>
+                            <input type = "text" name = "username" placeholder = "Username" required>
                         </div>
                     </div>
                     <div class = "field input">
                         <label>Password</label>
-                        <input type = "password" name = "password" placeholder = "Enter new password" required>
+                        <input type = "password" name = "password" placeholder = "Password" required>
                         <i class = "fas fa-eye"></i>
                     </div>
                     <div class = "field image">

@@ -12,12 +12,8 @@
     // Check for empty fields
 
     if (!empty($username) && !empty($pwd) && !empty($_FILES['image'])) {
-        $stmt = mysqli_prepare($con, "SELECT username FROM users WHERE username = ?" );
-        mysqli_stmt_bind_param($stmt, "s", $username);
-        mysqli_stmt_bind_result($stmt, $result);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_fetch($stmt);
-
+        $sql = "SELECT username FROM users WHERE username = '{$username}'";
+        $result = mysqli_query($con, $sql);
         // check if email is already exists in the database or not
             if(mysqli_num_rows($result) > 0)
             {
@@ -39,7 +35,7 @@
 
 
                         //encrypt password, para fazer login basta comparar again usando password_verify($password, $hashedPassword)
-                        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                        $hashedPassword = password_hash($pwd, PASSWORD_DEFAULT);
 
                             // lets insert all user data inside table
                             $sql2 = mysqli_query($con, "INSERT INTO users (username,password)

@@ -10,6 +10,8 @@ session_start();
       if(password_verify($password, $hashedPassword)){
         echo "Login complete";
         $_SESSION['authenticated'] = true;
+        $_SESSION['mainUserName']; //introduzir nome que retorna da base dados para utilizar no website em geral
+        $_SESSION['mainUserStatus']; //introduzir status que retorna da base dados para utilizar no website em geral
         header("Location: users.php");
       }
       else{

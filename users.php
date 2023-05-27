@@ -25,8 +25,8 @@ require 'verify.php';
                     <div class = "content">
                         <img src = "img/img.jpg" alt = "">
                         <div class = "details">
-                            <span>Psicologo Marco</span>
-                            <p>Active Now</p>
+                            <span><?php $_SESSION['mainUserName']?> </span>
+                            <p> <?php $_SESSION['mainUserStatus']?> </p>
                         </div>
                     </div>
                     <a href = "logout.php" class = "logout">Logout</a>
@@ -36,87 +36,25 @@ require 'verify.php';
                     <input type = "text" placeholder = "Enter name to search...">
                     <button><i class = "fas fa-search"></i></button>
                 </div>
+
+
                 <div class = "users-list">
-                    <a href = "#" onclick="openChat('vitor')">
-                        <div class = "content">
-                            <img src = "img/img.jpg" alt = "">
-                            <div class = "details">
-                                <span>Vitor</span>
-                                <p>O meu pai é padre</p>
-                            </div>
-                        </div>
-                        <div class = "status-dot"><i class = "fas fa-circle"></i></div>
-                    </a>
-                    <a href = "#">
-                        <div class = "content">
-                            <img src = "img/img.jpg" alt = "">
-                            <div class = "details">
-                                <span>Pilas</span>
-                                <p>No money no funny</p>
-                            </div>
-                        </div>
-                        <div class = "status-dot"><i class = "fas fa-circle"></i></div>
-                    </a>
-                    <a href = "#">
-                        <div class = "content">
-                            <img src = "img/img.jpg" alt = "">
-                            <div class = "details">
-                                <span>Vasco</span>
-                                <p>1/4 para dois</p>
-                            </div>
-                        </div>
-                        <div class = "status-dot"><i class = "fas fa-circle"></i></div>
-                    </a>
-                    <a href = "#">
-                        <div class = "content">
-                            <img src = "img/img.jpg" alt = "">
-                            <div class = "details">
-                                <span>Antonino</span>
-                                <p>Quem não mama não chora</p>
-                            </div>
-                        </div>
-                        <div class = "status-dot"><i class = "fas fa-circle"></i></div>
-                    </a>
-                    <a href = "#">
-                        <div class = "content">
-                            <img src = "img/babyshark.jpg" alt = "">
-                            <div class = "details">
-                                <span>Velez</span>
-                                <p>Caça-Kakayas</p>
-                            </div>
-                        </div>
-                        <div class = "status-dot"><i class = "fas fa-circle"></i></div>
-                    </a>
-                    <a href = "#">
-                        <div class = "content">
-                            <img src = "img/img.jpg" alt = "">
-                            <div class = "details">
-                                <span>Marco</span>
-                                <p>This is text message</p>
-                            </div>
-                        </div>
-                        <div class = "status-dot"><i class = "fas fa-circle"></i></div>
-                    </a>
-                    <a href = "#">
-                        <div class = "content">
-                            <img src = "img/img.jpg" alt = "">
-                            <div class = "details">
-                                <span>Marco</span>
-                                <p>This is text message</p>
-                            </div>
-                        </div>
-                        <div class = "status-dot"><i class = "fas fa-circle"></i></div>
-                    </a>
-                    <a href = "#">
-                        <div class = "content">
-                            <img src = "img/img.jpg" alt = "">
-                            <div class = "details">
-                                <span>Marco</span>
-                                <p>This is text message</p>
-                            </div>
-                        </div>
-                        <div class = "status-dot"><i class = "fas fa-circle"></i></div>
-                    </a>
+                <?php
+                    $query = "SELECT * FROM users";
+                    $result = mysqli_query($con, $query);
+                    while($row = $query){
+                        echo '<a href="#" onclick="openChat(\'' . $row['userName']. '\')">';
+                        echo '<div class="content">';
+                        echo '<img src="img/img.jpg" alt="">';
+                        echo '<div class="details">';
+                        echo '<span>' . $row['userName'] . '</span>';
+                        echo '<p>' . $row['userStatus'] . '</p>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '<div class="status-dot"><i class="fas fa-circle"></i></div>';
+                        echo '</a>';
+                    }
+                ?>
                 </div>
             </section>
         </div>

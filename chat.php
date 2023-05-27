@@ -23,11 +23,11 @@ require 'verify.php';
         <div class = "wrapperChat">
             <section class = "chat-area">
                 <header>
-                    <a href="#" class = "back-icon"><i class = "fas fa-arrow-left"></i></a>
+                    <a href="chat.php" class = "back-icon"><i class = "fas fa-arrow-left"></i></a>
                     <img src = "img/img.jpg" alt = "">
                     <div class = "details">
-                        <span>Marco</span>
-                        <p>Active Now</p>
+                        <span><?php echo $_SESSION['mainUserName']?></span>
+                        <p><?php echo $_SESSION['mainUserStatus'] ?></p>
                     </div>
                 </header>
                 <div class = "chat-box">

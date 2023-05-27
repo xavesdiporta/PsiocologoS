@@ -4,23 +4,24 @@
     session_start();
     include_once 'connect.php';
 
-    $fname = mysqli_real_escape_string($con, $_POST['fname']);
-    $lname = mysqli_real_escape_string($con, $_POST['lname']);
-    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $username = mysqli_real_escape_string($con, $_POST['username']);
     $pwd = mysqli_real_escape_string($con, $_POST['password']);
 
     // Error handlers
 
     // Check for empty fields
 
-    if (!empty($fname) && !empty($lname) && !empty($email) && !empty($pwd)) {
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)) 
-        {
-            // check if email is already exists in the database or not
-            $sql = mysqli_query($con, "SELECT email FROM users WHERE email = '{$email}'");
-            if(mysqli_num_rows($sql) > 0)
+    if (!empty($username) && !empty($pwd)) {
+        $stmt = mysqli_prepare($con, "SELECT username FROM users WHERE username = ?" );
+        mysqli_stmt_bind_param($stmt, "s", $username);
+        mysqli_stmt_bind_result($stmt, $result);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_fetch($stmt);
+
+        // check if email is already exists in the database or not
+            if(mysqli_num_rows($result) > 0)
             {
-                echo "$email - This email already exists!";
+                echo "$username - This username already exists!";
             }else{
                 if(isset($_FILES['image'])){
                     $img_name = $_FILES['image']['name']; // getting user uploaded img name
@@ -33,23 +34,17 @@
 
                     $extensions = ['png', 'jpeg', 'jpg']; // these are some valid img ext and we've store them in array
                     if(in_array($img_ext, $extensions) === true){
-                        $time = time(); // this will return us current time.. 
-                                        // we need this time because when you uploading user img to in our folder we rename user file with current time
-                                        // so all the img file will have a unique name
                         // lets move the user uploaded img to our particular folder
-                        $new_img_name = $time.$img_name;
+                        $new_img_name = $username;
                         if(move_uploaded_file($tmp_name, "images/".$new_img_name)) {
-                            $status = "Active now"; // once user signed up then his status will be active now"
-                            $random_id = rand(time(), 10000000); // creating random id for user
-
 
 
                         //encrypt password, para fazer login basta comparar again usando password_verify($password, $hashedPassword)
                         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
                             // lets insert all user data inside table
-                            $sql2 = mysqli_query($con, "INSERT INTO users (unique_id, fname, lname, email, password, img, status)
-                                                        VALUES ({$random_id}, '{$fname}', '{$lname}', '{$email}', '{$hashedPassword}', '{$new_img_name}', '{$status}')");
+                            $sql2 = mysqli_query($con, "INSERT INTO users (username,password)
+                                                        VALUES ('{$username}','{$hashedPassword}'");
 
                             if($sql2){
                                 $sql3 = mysqli_query($con, "SELECT * FROM users WHERE email = '{$email}'");
@@ -70,9 +65,6 @@
                     echo "Please select an image file!";
                 }
             }
-        } else{
-            echo "$email - This is not a valid email";
-        }
        
 
     } else{

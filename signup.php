@@ -14,26 +14,18 @@
 
 
     <!-- body things -->
-    <body>
+    <body id="bodyForm">
 
-        <div class = "wrapper">
+        <div class = "wrapperForm" id="wrapperForm">
             <section class = "form signup">
                 <header>Realtime Chat App</header>
-                <form action = "signup.php"  enctype="multipart/form-data">
+                <form action = "inc/signup.php"  enctype="multipart/form-data">
                     <div class = "error-txt"></div>
                     <div class = "name-details">
                         <div class = "field input">
-                            <label>First Name</label>
-                            <input type = "text" name = "fname" placeholder = "First name" required>
+                            <label>username</label>
+                            <input type = "text" name = "username" placeholder = "First name" required>
                         </div>
-                        <div class = "field input">
-                            <label>Last Name</label>
-                            <input type = "text" name = "lname" placeholder = "Last name" required>
-                        </div>
-                    </div>
-                    <div class = "field input">
-                        <label>Email Address</label>
-                        <input type = "text" name = "email" placeholder = "Enter your email" required>
                     </div>
                     <div class = "field input">
                         <label>Password</label>
@@ -48,7 +40,7 @@
                         <input type = "submit" value = "Continue to Chat">
                     </div>
                 </form>
-                <div class = "link">Already signed up? <a href = "#">Login now</a></div>
+                <div class = "link">Already signed up? <a href = "login.html">Login now</a></div>
             </section>
         </div>
 

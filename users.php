@@ -1,5 +1,6 @@
 <?php
 require 'verify.php';
+require "inc/connect.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,8 +26,8 @@ require 'verify.php';
                     <div class = "content">
                         <img src = "img/img.jpg" alt = "">
                         <div class = "details">
-                            <span><?php $_SESSION['mainUserName']?> </span>
-                            <p> <?php $_SESSION['mainUserStatus']?> </p>
+                            <span><?php echo $_SESSION['mainUserName']?> </span>
+                            <p> <?php echo $_SESSION['mainUserStatus']?> </p>
                         </div>
                     </div>
                     <a href = "logout.php" class = "logout">Logout</a>
@@ -42,13 +43,13 @@ require 'verify.php';
                 <?php
                     $query = "SELECT * FROM users";
                     $result = mysqli_query($con, $query);
-                    while($row = $query){
-                        echo '<a href="#" onclick="openChat(\'' . $row['userName']. '\')">';
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo '<a href="#" onclick="openChat(\'' . $row['username']. '\')">';
                         echo '<div class="content">';
                         echo '<img src="img/img.jpg" alt="">';
                         echo '<div class="details">';
-                        echo '<span>' . $row['userName'] . '</span>';
-                        echo '<p>' . $row['userStatus'] . '</p>';
+                        echo '<span>' . $row['username'] . '</span>';
+                        echo '<p>' . "Active" . '</p>';
                         echo '</div>';
                         echo '</div>';
                         echo '<div class="status-dot"><i class="fas fa-circle"></i></div>';

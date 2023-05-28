@@ -39,13 +39,12 @@
 
                             // lets insert all user data inside table
                             $sql2 = mysqli_query($con, "INSERT INTO users (username,password)
-                                                        VALUES ('{$username}','{$hashedPassword}'");
+                                                        VALUES ('{$username}','{$hashedPassword}')");
                             if($sql2){
-                                header("Location: ../login.html");
+                                echo "Sucessful";
                             }
                             else{
                                 echo "ERROR INSERTING DATA";
-                                header("Location: ../signup.php");
                             }
                         }
 

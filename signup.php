@@ -1,51 +1,59 @@
-<!DOCTYPE html>
-<html>
 
-     
-    <!-- head things -->
-    <head>
-        <meta charset="utf-8" />
-        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Psicologo da Mosca - Login</title>
-        <link rel = "stylesheet" href = "inc/main.inc.css">
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    </head>
+<?php
+
+    session_start();
+    include_once 'connect.php';
+
+    $username = mysqli_real_escape_string($con, $_POST['username']);
+    $pwd = mysqli_real_escape_string($con, $_POST['password']);
+
+    // Error handlers
+
+    // Check for empty fields
+
+    if (!empty($username) && !empty($pwd) && !empty($_FILES['image'])) {
+        $sql = "SELECT username FROM users WHERE username = '{$username}'";
+        $result = mysqli_query($con, $sql);
+        // check if email is already exists in the database or not
+            if(mysqli_num_rows($result) > 0)
+            {
+                echo "$username - This username already exists!";
+            }else{
+                    $img_name = $_FILES['image']['name']; // getting user uploaded img name
+                    $img_type = $_FILES['image']['type']; // getting user uploaded img type
+                    $tmp_name = $_FILES['image']['tmp_name']; // this temporary name is used to save/move file in our folder
+
+                    // lets explode image and get the last extension like jpg png
+                    $img_explode = explode('.', $img_name);
+                    $img_ext = end($img_explode); // here we get the extension of an user uploaded img file
+
+                    $extensions = ['png', 'jpeg', 'jpg']; // these are some valid img ext and we've store them in array
+                    if(in_array($img_ext, $extensions) === true){
+                        // lets move the user uploaded img to our particular folder
+                        $new_img_name = $username;
+                        if(move_uploaded_file($tmp_name, "images/".$new_img_name)) {
 
 
-    <!-- body things -->
-    <body id="bodyForm">
+                        //encrypt password, para fazer login basta comparar again usando password_verify($password, $hashedPassword)
+                        $hashedPassword = password_hash($pwd, PASSWORD_DEFAULT);
 
-        <div class = "wrapperForm" id="wrapperForm">
-            <section class = "form signup">
-                <header>Realtime Chat App</header>
-                <form action ="inc/signup.php" method="post" enctype="multipart/form-data">
-                    <div class = "error-txt"></div>
-                    <div class = "name-details">
-                        <div class = "field input">
-                            <label>Username</label>
-                            <input type = "text" name = "username" placeholder = "Username" required>
-                        </div>
-                    </div>
-                    <div class = "field input">
-                        <label>Password</label>
-                        <input type = "password" name = "password" placeholder = "Password" required>
-                        <i class = "fas fa-eye"></i>
-                    </div>
-                    <div class = "field image">
-                        <label>Select Image</label>
-                        <input type = "file" name = "image" required>
-                    </div>
-                    <div class = "field button">
-                        <input type = "submit" value = "Continue to Chat">
-                    </div>
-                </form>
-                <div class = "link">Already signed up? <a href = "login.html">Login now</a></div>
-            </section>
-        </div>
+                            // lets insert all user data inside table
+                            $sql2 = mysqli_query($con, "INSERT INTO users (username,password)
+                                                        VALUES ('{$username}','{$hashedPassword}')");
+                            if($sql2){
+                                echo "Sucessful";
+                            }
+                            else{
+                                echo "ERROR INSERTING DATA";
+                            }
+                        }
 
-        <script src = "inc/pass-show-hide.js"></script>
-        <script src = "inc/signup.js"></script>
+                    } else{
+                        echo "This extension file not allowed, Please choose a JPG or PNG file!";
+                    }
+            }
+       
 
-    </body>
-</html>
+    } else{
+        echo "all fields are required";
+    }

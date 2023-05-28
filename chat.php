@@ -1,5 +1,6 @@
 <?php
 require 'verify.php';
+require 'inc/connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +18,10 @@ require 'verify.php';
     </head>
 
 
+    <?php 
+    $username = $_GET['username'];
+    $status = $_GET['status'];
+    ?>
     <!-- body things -->
     <body id="hero">
 
@@ -26,8 +31,8 @@ require 'verify.php';
                     <a href="chat.php" class = "back-icon"><i class = "fas fa-arrow-left"></i></a>
                     <img src = "img/img.jpg" alt = "">
                     <div class = "details">
-                        <span><?php echo $_SESSION['mainUserName']?></span>
-                        <p><?php echo $_SESSION['mainUserStatus'] ?></p>
+                        <span id="username"><?php echo $username ?></span>
+                        <p id="status"><?php echo $status ?></p>
                     </div>
                 </header>
                 <div class = "chat-box">

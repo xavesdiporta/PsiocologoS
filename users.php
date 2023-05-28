@@ -44,16 +44,18 @@ require "inc/connect.php";
                     $query = "SELECT * FROM users";
                     $result = mysqli_query($con, $query);
                     while($row = mysqli_fetch_assoc($result)){
-                        echo '<a href="#" onclick="openChat(\'' . $row['username']. '\')">';
-                        echo '<div class="content">';
-                        echo '<img src="img/img.jpg" alt="">';
-                        echo '<div class="details">';
-                        echo '<span>' . $row['username'] . '</span>';
-                        echo '<p>' . "Active" . '</p>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '<div class="status-dot"><i class="fas fa-circle"></i></div>';
-                        echo '</a>';
+                        if(!($row['username'] == $_SESSION['mainUserName'])){
+                            echo '<a href="#" onclick="openChat(\'' . $row['username']. '\')">';
+                            echo '<div class="content">';
+                            echo '<img src="img/img.jpg" alt="">';
+                            echo '<div class="details">';
+                            echo '<span>' . $row['username'] . '</span>';
+                            echo '<p>' . "Active" . '</p>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="status-dot"><i class="fas fa-circle"></i></div>';
+                            echo '</a>';
+                        }
                     }
                 ?>
                 </div>

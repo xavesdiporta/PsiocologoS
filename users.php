@@ -1,65 +1,48 @@
-<?php
-require 'verify.php';
+<?php 
+
+  session_start(); //creates a session or resumes the current one based on a session identifier passed via a GET or POST request, or passed via a cookie.
+  include_once "php/config.php"; //includes the DB connecter
+  if(!isset($_SESSION['unique_id'])) //checks if the session variable unique_id is set or not
+  {
+    header("location: login.php"); //redirects to login.php
+  }
+
+  include_once "header.php"; //includes the header.php file
 ?>
-<!DOCTYPE html>
-<html>
-
-     
-    <!-- head things -->
-    <head>
-        <meta charset="utf-8" />
-        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Psicologo da Mosca - Login</title>
-        <link rel = "stylesheet" href = "inc/main.inc.css">
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    </head>
 
 
-    <!-- body things -->
-    <body>
-
-        <div class = "wrapperUsers">
-            <section class = "users">
-                <header>
-                    <div class = "content">
-                        <img src = "img/img.jpg" alt = "">
-                        <div class = "details">
-                            <span><?php $_SESSION['mainUserName']?> </span>
-                            <p> <?php $_SESSION['mainUserStatus']?> </p>
-                        </div>
-                    </div>
-                    <a href = "logout.php" class = "logout">Logout</a>
-                </header>
-                <div class = "search">
-                    <span class = "text">Select an user to start chat</span>
-                    <input type = "text" placeholder = "Enter name to search...">
-                    <button><i class = "fas fa-search"></i></button>
-                </div>
-
-
-                <div class = "users-list">
-                <?php
-                    $query = "SELECT * FROM users";
-                    $result = mysqli_query($con, $query);
-                    while($row = $query){
-                        echo '<a href="#" onclick="openChat(\'' . $row['userName']. '\')">';
-                        echo '<div class="content">';
-                        echo '<img src="img/img.jpg" alt="">';
-                        echo '<div class="details">';
-                        echo '<span>' . $row['userName'] . '</span>';
-                        echo '<p>' . $row['userStatus'] . '</p>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '<div class="status-dot"><i class="fas fa-circle"></i></div>';
-                        echo '</a>';
-                    }
-                ?>
-                </div>
-            </section>
+<body>
+  <div class="wrapper">
+    <section class="users">
+      <header>
+        <div class="content">
+          <?php 
+            $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}"); //sql query
+            if(mysqli_num_rows($sql) > 0) //returns the number of rows in a result set
+            {
+              $row = mysqli_fetch_assoc($sql); //fetches a result row as an associative array
+            }
+          ?>
+          <img src="php/images/<?php echo $row['img']; ?>" alt="">
+          <div class="details">
+            <span><?php echo $row['fname']. " " . $row['lname'] ?></span> <!---- displays the first name and last name of the user ---->
+            <p><?php echo $row['status']; ?></p> <!---- displays the status of the user ---->
+          </div>
         </div>
-        <div id="chatContent"></div>
-        <script src = "inc/users.js"></script>
+        <a href="php/logout.php?logout_id=<?php echo $row['unique_id']; ?>" class="logout">Logout</a>
+      </header>
+      <div class="search">
+        <span class="text">Select an user to start chat</span>
+        <input type="text" placeholder="Enter name to search...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <div class="users-list">
+  
+      </div>
+    </section>
+  </div>
 
-    </body>
+  <script src="javascript/users.js"></script>
+
+</body>
 </html>

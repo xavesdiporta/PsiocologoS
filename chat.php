@@ -1,97 +1,47 @@
-<?php
-require 'verify.php';
+<?php 
+  session_start(); //creates a session or resumes the current one based on a session identifier passed via a GET or POST request, or passed via a cookie.
+  include_once "php/config.php"; //include the DB conection
+  if(!isset($_SESSION['unique_id'])) //checks if the session variable unique_id is set or not
+  {
+    header("location: login.php");
+  }
 ?>
-
-<!DOCTYPE html>
-<html>
-
-     
-    <!-- head things -->
-    <head>
-        <meta charset="utf-8" />
-        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Psicologo da Mosca - Login</title>
-        <link rel = "stylesheet" href = "inc/main.inc.css">
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    </head>
-
-
-    <!-- body things -->
-    <body id="hero">
-
-        <div class = "wrapperChat">
-            <section class = "chat-area">
-                <header>
-                    <a href="chat.php" class = "back-icon"><i class = "fas fa-arrow-left"></i></a>
-                    <img src = "img/img.jpg" alt = "">
-                    <div class = "details">
-                        <span><?php echo $_SESSION['mainUserName']?></span>
-                        <p><?php echo $_SESSION['mainUserStatus'] ?></p>
-                    </div>
-                </header>
-                <div class = "chat-box">
-                    <div class = "chat outgoing">
-                        <div class = "details">
-                            <p>Ché olá tudo bem?.</p>
-                        </div>
-                    </div>
-                    <div class = "chat incoming">
-                        <img src = "img/img.jpg" alt = "">
-                        <div class = "details">
-                            <p>Comigo está tudo yah, e contio majé?</p>
-                        </div>
-                    </div>
-                    <div class = "chat outgoing">
-                        <div class = "details">
-                            <p>Estou com os pés para a cova mas yah.</p>
-                        </div>
-                    </div>
-                    <div class = "chat incoming">
-                        <img src = "img/img.jpg" alt = "">
-                        <div class = "details">
-                            <p>Tá porra isso é mau yah, como aconteceu.</p>
-                        </div>
-                    </div>
-                    <div class = "chat outgoing">
-                        <div class = "details">
-                            <p>Parti o antebraço a esgaçar o chouriço YY.</p>
-                        </div>
-                    </div>
-                    <div class = "chat incoming">
-                        <img src = "img/img.jpg" alt = "">
-                        <div class = "details">
-                            <p>Caralho desse Ramos, só faz merda.</p>
-                        </div>
-                    </div>
-                    <div class = "chat outgoing">
-                        <div class = "details">
-                            <p>Memo aserio brro.</p>
-                        </div>
-                    </div>
-                    <div class = "chat incoming">
-                        <img src = "img/img.jpg" alt = "">
-                        <div class = "details">
-                            <p>Mas olha cheira meu pau ahah.</p>
-                        </div>
-                    </div>
-                    <div class = "chat outgoing">
-                        <div class = "details">
-                            <p>Não obrigado, o medico não recomenda.</p>
-                        </div>
-                    </div>
-                    <div class = "chat incoming">
-                        <img src = "img/img.jpg" alt = "">
-                        <div class = "details">
-                            <p>Ai fiquei triste majé.</p>
-                        </div>
-                    </div>
-                </div>
-                <form action = "#" class = "typing-area">
-                    <input type = "text" placeholder = "Type a message here...">
-                    <button><i class = "fab fa-telegram-plane"></i></button>
-                </form>
-            </section>
+<?php include_once "header.php"; ?> <!-- include the header file -->
+<body>
+  <div class="wrapper">
+    <section class="chat-area">
+      <header>
+        <?php 
+          $user_id = mysqli_real_escape_string($conn, $_GET['user_id']); //escapes special characters in a string for use in an SQL statement
+          $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$user_id}"); //sql query
+          if(mysqli_num_rows($sql) > 0) //returns the number of rows in a result set
+          {
+            $row = mysqli_fetch_assoc($sql); //fetches a result row as an associative array
+          }
+          else
+          {
+            header("location: users.php"); //redirects to users.php 
+          }
+        ?>
+        <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
+        <img src="php/images/<?php echo $row['img']; ?>" alt="">
+        <div class="details">
+          <span><?php echo $row['fname']. " " . $row['lname'] ?></span> <!---- displays the first name and last name of the user ---->
+          <p><?php echo $row['status']; ?></p> <!---- displays the status of the user ---->
         </div>
-    </body>
+      </header>
+      <div class="chat-box">
+
+      </div>
+      <form action="#" class="typing-area"> <!---- form to send the message ---->
+        <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
+        <input type="text" name="message" class="input-field" placeholder="Type a message here..." autocomplete="off">
+        <button><i class="fab fa-telegram-plane"></i></button>
+      </form>
+    </section>
+  </div>
+
+  <script src="javascript/chat.js"></script>
+
+</body>
 </html>

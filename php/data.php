@@ -4,7 +4,7 @@
     {
         $sql2 = "SELECT * FROM messages WHERE (incoming_msg_id = {$row['unique_id']}
                 OR outgoing_msg_id = {$row['unique_id']}) AND (outgoing_msg_id = {$outgoing_id} 
-                OR incoming_msg_id = {$outgoing_id}) ORDER BY msg_id DESC LIMIT 1"; 
+                OR incoming_msg_id = {$outgoing_id}) ORDER BY msg_id DESC LIMIT 1";
 
                 //TODO    selects the last message from the messages table
 
@@ -25,15 +25,15 @@
         ($row['status'] == "Offline now") ? $offline = "offline" : $offline = "";   //TODO   checks if the status is equal to "Offline now", if yes then sets the variable to "offline"
         ($outgoing_id == $row['unique_id']) ? $hid_me = "hide" : $hid_me = "";      //TODO   checks if the outgoing_id is equal to the unique_id, if yes then sets the variable to "hide"
 
-        $output .= '<a href="chat.php?user_id='. $row['unique_id'] .'">             //TODO   appends the string to the variable
-                    <div class="content">                                                
-                    <img src="php/images/'. $row['img'] .'" alt="">                 
+        $output .= '<a href="#" onclick="openChat(\'' . $row['unique_id'] . '\', \'' . $row['status'] . '\')">             
+                <div class="content">                                                
+                    <img src="php/images/' . $row['img'] . '" alt="">                 
                     <div class="details">                                           
-                        <span>'. $row['fname']. " " . $row['lname'] .'</span>
-                        <p>'. $you . $msg .'</p>
+                        <span>' . $row['fname'] . ' ' . $row['lname'] . '</span>
+                        <p>' . $you . $msg . '</p>
                     </div>
-                    </div>
-                    <div class="status-dot '. $offline .'"><i class="fas fa-circle"></i></div>
-                </a>';
+                </div>
+                <div class="status-dot ' . $offline . '"><i class="fas fa-circle"></i></div>
+            </a>';
     }
 ?>

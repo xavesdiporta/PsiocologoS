@@ -10,11 +10,14 @@ session_start();
       mysqli_execute($stmt);
       mysqli_stmt_bind_result($stmt, $hashedPassword);
       mysqli_stmt_fetch($stmt);
-      if(password_verify($password, $hashedPassword)){
+      if(password_verify($_POST['password'], $hashedPassword)){
         echo "Login complete";
         $_SESSION['authenticated'] = true;
         $_SESSION['mainUserName'] = $username; //introduzir nome que retorna da base dados para utilizar no website em geral
         $_SESSION['mainUserStatus'] = "Active";//introduzir status que retorna da base dados para utilizar no website em geral
+        if($_SESSION['authenticated'] = true){
+          $sql = mysqli_query($con, "UPDATE users SET status = 'Active' WHERE username = {'$username'}");
+        }
         header("Location: users.php");
       }
       else{

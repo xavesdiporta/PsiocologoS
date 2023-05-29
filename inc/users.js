@@ -10,7 +10,7 @@ searchBtn.onclick = ()=>{
     seachBar.value = '';
 }
 
-function openChat(user){
+function openChat(user,status){
         // Create an iframe element
         var iframe = document.createElement('iframe');
         iframe.src = 'chat.php?username=' + user + "&status=Active";

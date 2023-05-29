@@ -39,21 +39,21 @@ require 'inc/connect.php';
                 </header>
                 <div class = "chat-box">
                     <?php
-                        if(chat == outgoing){
+                        if($chat == "outgoing"){
                             echo "<div class = 'chat outgoing'>
                                         <div class = 'details'>
                                             <p>Ché olá tudo bem?.</p>
                                         </div>
-                                    </div>"
+                                    </div>";
                         }
-                        else if(chat == incoming){
+                        else if($chat == "incoming"){
                             echo"
-                            <div class = "chat incoming">
-                                <img src = 'inc/images/".$username.".jpg' alt = "">
-                                <div class = "details">
-                                    <p>Comigo está tudo yah, e contio majé?</p>
+                            <div class = 'chat incoming'>
+                                <img src = 'inc/images/".$username.".jpg' alt = ''>
+                                <div class = 'details'>
+                                    <p>Comigo está tudo yah, e contigo majé?</p>
                                 </div>
-                            </div>"
+                            </div>";
                         }
                     ?>
                 </div>

@@ -19,17 +19,19 @@ require 'inc/connect.php';
 
 
     <?php 
-    $username = $_GET['username'];
-    $status = $_GET['status'];
+    $userInfo = $_GET['username'];
+    $userInfoArray = explode(",", $userInfo);
+    $username = $userInfoArray[0];
+    $status = $userInfoArray[1];
     ?>
     <!-- body things -->
     <body id="hero">
-
+        
         <div class = "wrapperChat">
             <section class = "chat-area">
                 <header>
                     <a href="chat.php" class = "back-icon"><i class = "fas fa-arrow-left"></i></a>
-                    <img src = "img/img.jpg" alt = "">
+                    <img src="<?php echo "inc/images/".$username.".jpg"; ?>" alt="">
                     <div class = "details">
                         <span id="username"><?php echo $username ?></span>
                         <p id="status"><?php echo $status ?></p>

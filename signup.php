@@ -27,10 +27,10 @@
                     $img_explode = explode('.', $img_name);
                     $img_ext = end($img_explode); // here we get the extension of an user uploaded img file
 
-                    $extensions = ['png', 'jpeg', 'jpg']; // these are some valid img ext and we've store them in array
+                    $extensions = ['jpg']; // these are some valid img ext and we've store them in array
                     if(in_array($img_ext, $extensions) === true){
                         // lets move the user uploaded img to our particular folder
-                        $new_img_name = $username . $img_ext;
+                        $new_img_name = $username . "." .  $img_ext;
                         if(move_uploaded_file($tmp_name, "inc/images/".$new_img_name)) {
 
 
@@ -51,7 +51,7 @@
 
                     } else{
                         include 'signup.html';
-                        echo "<br><span style='color: red; font-family: verdana; font-size: 30px; background-color: rgba(170,0,0,0.1); height: 40px; justify-content: center; text-align: center; vertical-align: center; '>This extension file not allowed, Please choose a JPG or PNG file!</span>";
+                        echo "<br><span style='color: red; font-family: verdana; font-size: 30px; background-color: rgba(170,0,0,0.1); height: 40px; justify-content: center; text-align: center; vertical-align: center; '>This image extension is not allowed, Please choose a JPG file!</span>";
                     }
             }
        

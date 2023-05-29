@@ -15,6 +15,9 @@ session_start();
         $_SESSION['authenticated'] = true;
         $_SESSION['mainUserName'] = $username; //introduzir nome que retorna da base dados para utilizar no website em geral
         $_SESSION['mainUserStatus'] = "Active";//introduzir status que retorna da base dados para utilizar no website em geral
+        if($_SESSION['authenticated'] = true){
+          $sql = mysqli_query($con, "UPDATE users SET status = 'Active' WHERE username = {'$username'}");
+        }
         header("Location: users.php");
       }
       else{

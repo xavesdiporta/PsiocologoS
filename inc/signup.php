@@ -30,7 +30,7 @@
                     $extensions = ['png', 'jpeg', 'jpg']; // these are some valid img ext and we've store them in array
                     if(in_array($img_ext, $extensions) === true){
                         // lets move the user uploaded img to our particular folder
-                        $new_img_name = $username;
+                        $new_img_name = $username . "." . $img_ext;
                         if(move_uploaded_file($tmp_name, "images/".$new_img_name)) {
 
 

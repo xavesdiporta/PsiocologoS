@@ -23,8 +23,8 @@ session_start();
         header("Location: users.php");
       }
       else{
-        echo "Error logging in  ";
-        header("Location: login.html");
+        include 'login.html';
+        echo "<br><span style='color: red; font-family: verdana; font-size: 30px; background-color: rgba(170,0,0,0.1); height: 40px; justify-content: center; text-align: center; vertical-align: center; '>Error logging in</span>";
       }
 
 ?>

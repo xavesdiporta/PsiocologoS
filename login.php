@@ -24,7 +24,7 @@ session_start();
       }
       else{
         include 'login.html';
-        echo "<br><span style='color: red; font-family: verdana; font-size: 30px; background-color: rgba(170,0,0,0.1); height: 40px; justify-content: center; text-align: center; vertical-align: center; '>Error logging in</span>";
+        echo "<br><span style='color: red; font-family: verdana; font-size: 30px; background-color: rgba(170,0,0,0.1); height: 200px; justify-content: center; text-align: center; vertical-align: center; '>Error logging in</span>";
       }
 
 ?>

@@ -47,7 +47,7 @@ require "inc/connect.php";
                         if(!($row['username'] == $_SESSION['mainUserName']) && $row['status'] == "Active"){
                             echo '<a href="#" onclick="openChat(\'' . $row['username']. ',' . $row['status'] . '\')">';
                             echo '<div class="content">';
-                            echo '<img src="img/img.jpg" alt="">';
+                            echo '<img src="inc/images/'. $row['username'] .'.jpg" alt="">';
                             echo '<div class="details">';
                             echo '<span>' . $row['username'] . '</span>';
                             echo '<p>' . $row['status'] . '</p>';

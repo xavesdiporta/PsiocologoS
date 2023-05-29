@@ -2,7 +2,7 @@
 <?php
 
     session_start();
-    include_once 'connect.php';
+    include_once 'inc/connect.php';
 
     $username = mysqli_real_escape_string($con, $_POST['username']);
     $pwd = mysqli_real_escape_string($con, $_POST['password']);
@@ -30,8 +30,8 @@
                     $extensions = ['png', 'jpeg', 'jpg']; // these are some valid img ext and we've store them in array
                     if(in_array($img_ext, $extensions) === true){
                         // lets move the user uploaded img to our particular folder
-                        $new_img_name = $username;
-                        if(move_uploaded_file($tmp_name, "images/".$new_img_name)) {
+                        $new_img_name = $username . $img_ext;
+                        if(move_uploaded_file($tmp_name, "inc/images/".$new_img_name)) {
 
 
                         //encrypt password, para fazer login basta comparar again usando password_verify($password, $hashedPassword)
@@ -42,6 +42,7 @@
                                                         VALUES ('{$username}','{$hashedPassword}')");
                             if($sql2){
                                 echo "Sucessful";
+                                header("Location: login.html");
                             }
                             else{
                                 echo "ERROR INSERTING DATA";
@@ -49,11 +50,13 @@
                         }
 
                     } else{
-                        echo "This extension file not allowed, Please choose a JPG or PNG file!";
+                        include 'signup.html';
+                        echo "<br><span style='color: red; font-family: verdana; font-size: 30px; background-color: rgba(170,0,0,0.1); height: 40px; justify-content: center; text-align: center; vertical-align: center; '>This extension file not allowed, Please choose a JPG or PNG file!</span>";
                     }
             }
        
 
     } else{
         echo "all fields are required";
+        header("Location: signup.html");
     }

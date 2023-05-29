@@ -24,7 +24,7 @@ require "inc/connect.php";
             <section class = "users">
                 <header>
                     <div class = "content">
-                        <img src = "img/img.jpg" alt = "">
+                        <img src = "<?php echo "inc/images/".$_SESSION['mainUserName'].".jpg"; ?>" alt = "">
                         <div class = "details">
                             <span><?php echo $_SESSION['mainUserName']?> </span>
                             <p> <?php echo $_SESSION['mainUserStatus']?> </p>

@@ -38,61 +38,24 @@ require 'inc/connect.php';
                     </div>
                 </header>
                 <div class = "chat-box">
-                    <div class = "chat outgoing">
-                        <div class = "details">
-                            <p>Ché olá tudo bem?.</p>
-                        </div>
-                    </div>
-                    <div class = "chat incoming">
-                        <img src = "<?php echo "inc/images/".$username.".jpg"; ?>" alt = "">
-                        <div class = "details">
-                            <p>Comigo está tudo yah, e contio majé?</p>
-                        </div>
-                    </div>
-                    <div class = "chat outgoing">
-                        <div class = "details">
-                            <p>Estou com os pés para a cova mas yah.</p>
-                        </div>
-                    </div>
-                    <div class = "chat incoming">
-                        <img src = "<?php echo "inc/images/".$username.".jpg"; ?>" alt = "">
-                        <div class = "details">
-                            <p>Tá porra isso é mau yah, como aconteceu.</p>
-                        </div>
-                    </div>
-                    <div class = "chat outgoing">
-                        <div class = "details">
-                            <p>Parti o antebraço a esgaçar o chouriço YY.</p>
-                        </div>
-                    </div>
-                    <div class = "chat incoming">
-                        <img src = "<?php echo "inc/images/".$username.".jpg"; ?>" alt = "">
-                        <div class = "details">
-                            <p>Caralho desse Ramos, só faz merda.</p>
-                        </div>
-                    </div>
-                    <div class = "chat outgoing">
-                        <div class = "details">
-                            <p>Memo aserio brro.</p>
-                        </div>
-                    </div>
-                    <div class = "chat incoming">
-                        <img src = "<?php echo "inc/images/".$username.".jpg"; ?>" alt = "">
-                        <div class = "details">
-                            <p>Mas olha cheira meu pau ahah.</p>
-                        </div>
-                    </div>
-                    <div class = "chat outgoing">
-                        <div class = "details">
-                            <p>Não obrigado, o medico não recomenda.</p>
-                        </div>
-                    </div>
-                    <div class = "chat incoming">
-                        <img src = "<?php echo "inc/images/".$username.".jpg"; ?>" alt = "">
-                        <div class = "details">
-                            <p>Ai fiquei triste majé.</p>
-                        </div>
-                    </div>
+                    <?php
+                        if(chat == outgoing){
+                            echo "<div class = 'chat outgoing'>
+                                        <div class = 'details'>
+                                            <p>Ché olá tudo bem?.</p>
+                                        </div>
+                                    </div>"
+                        }
+                        else if(chat == incoming){
+                            echo"
+                            <div class = "chat incoming">
+                                <img src = 'inc/images/".$username.".jpg' alt = "">
+                                <div class = "details">
+                                    <p>Comigo está tudo yah, e contio majé?</p>
+                                </div>
+                            </div>"
+                        }
+                    ?>
                 </div>
                 <form action = "#" class = "typing-area">
                     <input type = "text" placeholder = "Type a message here...">

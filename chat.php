@@ -44,7 +44,7 @@ require 'inc/connect.php';
                         </div>
                     </div>
                     <div class = "chat incoming">
-                        <img src = "img/img.jpg" alt = "">
+                        <img src = "<?php echo "inc/images/".$username.".jpg"; ?>" alt = "">
                         <div class = "details">
                             <p>Comigo está tudo yah, e contio majé?</p>
                         </div>
@@ -55,7 +55,7 @@ require 'inc/connect.php';
                         </div>
                     </div>
                     <div class = "chat incoming">
-                        <img src = "img/img.jpg" alt = "">
+                        <img src = "<?php echo "inc/images/".$username.".jpg"; ?>" alt = "">
                         <div class = "details">
                             <p>Tá porra isso é mau yah, como aconteceu.</p>
                         </div>
@@ -66,7 +66,7 @@ require 'inc/connect.php';
                         </div>
                     </div>
                     <div class = "chat incoming">
-                        <img src = "img/img.jpg" alt = "">
+                        <img src = "<?php echo "inc/images/".$username.".jpg"; ?>" alt = "">
                         <div class = "details">
                             <p>Caralho desse Ramos, só faz merda.</p>
                         </div>
@@ -77,7 +77,7 @@ require 'inc/connect.php';
                         </div>
                     </div>
                     <div class = "chat incoming">
-                        <img src = "img/img.jpg" alt = "">
+                        <img src = "<?php echo "inc/images/".$username.".jpg"; ?>" alt = "">
                         <div class = "details">
                             <p>Mas olha cheira meu pau ahah.</p>
                         </div>
@@ -88,7 +88,7 @@ require 'inc/connect.php';
                         </div>
                     </div>
                     <div class = "chat incoming">
-                        <img src = "img/img.jpg" alt = "">
+                        <img src = "<?php echo "inc/images/".$username.".jpg"; ?>" alt = "">
                         <div class = "details">
                             <p>Ai fiquei triste majé.</p>
                         </div>

@@ -51,15 +51,13 @@ require '../inc/connect.php';
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script>
                     $(document).ready(function() {
-                        let mainUsername;
-                        let userName;
                         // Handle form submission
                         $('#message-form').submit(function(e) {
                             e.preventDefault(); // Prevent default form submission
                             
                             let message = $('input[name="message"]').val(); // Get the message from the input field
-                             mainUserName = $('input[name="mainUserName"]').val(); // Get the mainUserName value
-                             userName = $('input[name="username"]').val(); // Get the username value
+                            let mainUserName = $('input[name="mainUserName"]').val(); // Get the mainUserName value
+                            let userName = $('input[name="username"]').val(); // Get the username value
                             console.log(message + " " + mainUserName + " " + userName)
 
                             // Make an AJAX request to insert the message into the database

@@ -14,7 +14,7 @@
     }
     else
     {
-        header("location: ../login.php");  //TODO   redirects to login.php
+        header("location: verify.php");  //TODO   redirects to login.php
     }
 
 

@@ -1,17 +1,66 @@
 <?php
-    session_start();  //TODO   creates a session or resumes the current one based on a session identifier passed via a GET or POST request, or passed via a cookie.
-    include_once "config.php";  //TODO   includes the DB connecter
-    $outgoing_user = $_SESSION['username'];  //TODO   gets the unique_id of the user
-    $sql = "SELECT * FROM users WHERE NOT username = {$outgoing_user} ORDER BY user_id DESC";  //TODO   sql query to select the users from the users table
-    $query = mysqli_query($conn, $sql);  //TODO   executes the sql query
-    $output = "";  //TODO   stores the output in the variable output
-    if(mysqli_num_rows($query) == 0)  //TODO   checks if the number of rows in the query is equal to 0
-    {
-        $output .= "No users are available to chat";  //TODO   stores the output in the variable output
-    }
-    elseif(mysqli_num_rows($query) > 0)  //TODO   checks if the number of rows in the query is greater than 0
-    {
-        include_once "data.php";  //TODO   includes the data.php file, which contains the data of the users in the users table
-    }
-    echo $output;  //TODO   prints the output
+require 'verify.php';
+require "../inc/connect.php";
 ?>
+<!DOCTYPE html>
+<html>
+
+     
+    <!-- head things -->
+    <head>
+        <meta charset="utf-8" />
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Psicologo da Mosca - Login</title>
+        <link rel = "stylesheet" href = "../inc/main.inc.css">
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    </head>
+
+
+    <!-- body things -->
+    <body>
+
+        <div class = "wrapperUsers">
+            <section class = "users">
+                <header>
+                    <div class = "content">
+                        <img src = "<?php echo "../inc/images/".$_SESSION['mainUserName'].".jpg"; ?>" alt = "">
+                        <div class = "details">
+                            <span><?php echo $_SESSION['mainUserName']?> </span>
+                            <p> <?php echo $_SESSION['mainUserStatus']?> </p>
+                        </div>
+                    </div>
+                    <a href = "logout.php" class = "logout">Logout</a>
+                </header>
+                <div class = "search">
+                    <span class = "text">Select an user to start chat</span>
+                    <input type = "text" placeholder = "Enter name to search...">
+                    <button><i class = "fas fa-search"></i></button>
+                </div>
+                <div class = "users-list">
+                <?php
+                    $query = "SELECT * FROM users";
+                    $result = mysqli_query($con, $query);
+                    while($row = mysqli_fetch_assoc($result)){
+                        if(!($row['username'] == $_SESSION['mainUserName']) && $row['status'] == "Active"){
+                            echo '<a href="#" onclick="openChat(\'' . $row['username']. ',' . $row['status'] . '\')">';
+                            echo '<div class="content">';
+                            echo '<img src="../inc/images/'. $row['username'] .'.jpg" alt="">';
+                            echo '<div class="details">';
+                            echo '<span>' . $row['username'] . '</span>';
+                            echo '<p>' . $row['status'] . '</p>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="status-dot"><i class="fas fa-circle"></i></div>';
+                            echo '</a>';
+                        }
+                    }
+                ?>
+                </div>
+            </section>
+        </div>
+        <div id="chatContent"></div>
+        <script src = "../inc/users.js"></script>
+
+    </body>
+</html>

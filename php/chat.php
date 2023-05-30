@@ -38,30 +38,71 @@ require '../inc/connect.php';
                     </div>
                 </header>
                 <div class = "chat-box">
-                    <?php
                     
-                        if($chat == "outgoing"){
-                            echo "<div class = 'chat outgoing'>
-                                        <div class = 'details'>
-                                            <p>Ché olá tudo bem?.</p>
-                                        </div>
-                                    </div>";
-                        }
-                        else if($chat == "incoming"){
-                            echo"
-                            <div class = 'chat incoming'>
-                                <img src = '../inc/images/".$username.".jpg' alt = ''>
-                                <div class = 'details'>
-                                    <p>Comigo está tudo yah, e contigo majé?</p>
-                                </div>
-                            </div>";
-                        }
-                    ?>
                 </div>
-                <form action = "#" class = "typing-area">
-                    <input type = "text" placeholder = "Type a message here...">
-                    <button><i class = "fab fa-telegram-plane"></i></button>
+                <form action="#" class="typing-area" id="message-form">
+                    <input type="text" placeholder="Type a message here...">
+                    <button type="submit"><i class="fab fa-telegram-plane"></i></button>
+                    <input id="userSender" value="<?php echo $_SESSION['mainUserName'] ?>" hidden>
+                    <input id="userSender" value="<?php echo $username ?>" hidden>
                 </form>
+
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        // Handle form submission
+
+                        var mainUsername = "<?php echo $_SESSION['mainUserName'] ?>";
+                        var username = "<?php echo $username ?>";
+
+                        $('#message-form').submit(function(e) {
+                            e.preventDefault(); // Prevent default form submission
+
+                            var message = $('input[type="text"]').val(); // Get the message from the input field
+
+                            // Make an AJAX request to insert the message into the database
+                            $.ajax({
+                                url: 'insert_message.php', // Replace with the PHP file to handle database insertion
+                                method: 'POST',
+                                data: {
+                                    message: message,
+                                    mainUsername: mainUsername,
+                                    username: username
+                                },
+                                success: function(response) {
+                                    // Call getMessagesFromDatabase function to update the chat
+                                    getMessagesFromDatabase();
+                                },
+                                error: function(xhr, status, error) {
+                                    console.log(error); // Log any errors
+                                }
+                            });
+
+                            $('input[type="text"]').val(''); // Clear the input field
+                        });
+
+                        // Function to get messages from the database and update the chat
+                        function getMessagesFromDatabase() {
+                            // Make an AJAX request to retrieve messages from the database
+                            $.ajax({
+                                    url: 'get_messages.php',
+                                    method: 'GET',
+                                    data: {
+                                        sender: $_SESSION['mainUserName'],
+                                        receiver: $username,
+                                    },
+                                success: function(response) {
+                                    // Update the chat with the retrieved messages
+                                    $('.chat-box').html(response);
+                                },
+                                error: function(xhr, status, error) {
+                                    console.log(error); // Log any errors
+                                }
+                            });
+                        }
+                        });
+                </script>
             </section>
         </div>
     </body>

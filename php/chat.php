@@ -52,12 +52,14 @@ require '../inc/connect.php';
                 <script>
                     $(document).ready(function() {
                         // Handle form submission
+                        let mainUserName;
+                        let userName;
                         $('#message-form').submit(function(e) {
                             e.preventDefault(); // Prevent default form submission
                             
                             let message = $('input[name="message"]').val(); // Get the message from the input field
-                            let mainUserName = $('input[name="mainUserName"]').val(); // Get the mainUserName value
-                            let userName = $('input[name="username"]').val(); // Get the username value
+                            mainUserName = $('input[name="mainUserName"]').val(); // Get the mainUserName value
+                            userName = $('input[name="username"]').val(); // Get the username value
                             console.log(message + " " + mainUserName + " " + userName)
 
                             // Make an AJAX request to insert the message into the database
@@ -80,7 +82,6 @@ require '../inc/connect.php';
                             });
 
                             $('input[type="text"]').val(''); // Clear the input field
-                            console.log("teste");
                         });
 
                         // Function to get messages from the database and update the chat
@@ -96,6 +97,7 @@ require '../inc/connect.php';
                                 success: function(response) {
                                     // Update the chat with the retrieved messages
                                     $('.chat-box').html(response);
+                                    console.log(response);
                                 },
                                 error: function(xhr, status, error) {
                                     console.log(error); // Log any errors

@@ -43,7 +43,7 @@ require "../inc/connect.php";
                     $result = mysqli_query($con, $query);
                     while($row = mysqli_fetch_assoc($result)){
                         if(!($row['username'] == $_SESSION['mainUserName']) && $row['status'] == "Active"){
-                            echo '<a href="#" onclick="openChat(\'' . $row['username']. ',' . $row['status'] . '\')">';
+                            echo '<a href="#" onclick="openChat(\'' . $row['username']. ',' . $row['status'] . "," . $_SESSION['mainUserName'] . '\')">';
                             echo '<div class="content">';
                             echo '<img src="../inc/images/'. $row['username'] .'.jpg" alt="">';
                             echo '<div class="details">';
@@ -59,7 +59,7 @@ require "../inc/connect.php";
                 </div>
             </section>
         </div>
-        <div id="chatContent"></div>
+        <div id="chatContent" style="width: 50%"></div>
         <script src = "../inc/users.js"></script>
 
     </body>

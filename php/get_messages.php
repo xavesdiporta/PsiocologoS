@@ -29,7 +29,7 @@ if($result)
             else
             {
                 echo '<div class="chat incoming">
-                        <img src="../php/images/'.$receiver.'.jpg" alt="">
+                        <img src="../inc/images/'.$receiver.'.jpg" alt="">
                         <div class="details">
                             <p>'. $row['message'] .'</p>
                         </div>
@@ -37,7 +37,7 @@ if($result)
             }
         }
     }else{
-        echo "ROWS <= 0";
+        echo "<br>Begin chatting!";
     } 
 }else{
     echo "Error: ";

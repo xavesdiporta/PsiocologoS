@@ -5,7 +5,7 @@ include '../inc/connect.php';
 
 // Retrieve the message, mainUsername, and username values from the AJAX request
 $message = $_POST['message'];
-$mainUserName = $_POST['mainUserName'];
+$mainUserName = $_POST['mainUsername'];
 $username = $_POST['username'];
 $time = date('Y-m-d H:i:s', time());
 

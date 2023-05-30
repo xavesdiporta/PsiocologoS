@@ -82,6 +82,7 @@ require '../inc/connect.php';
                             });
 
                             $('input[type="text"]').val(''); // Clear the input field
+                            console.log("teste");
                         });
 
                         // Function to get messages from the database and update the chat

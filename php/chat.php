@@ -40,11 +40,11 @@ require '../inc/connect.php';
                 <div class = "chat-box">
                     
                 </div>
-                <form action="#" class="typing-area" id="message-form">
-                    <input type="text" placeholder="Type a message here...">
+                <form action="#" class="typing-area" id="message-form" method="post">
+                    <input type="text" name="message" placeholder="Type a message here...">
+                    <input type="hidden" name="mainUserName" value="<?php echo $_SESSION['mainUserName']; ?>">
+                    <input type="hidden" name="username" value="<?php echo $username; ?>">
                     <button type="submit"><i class="fab fa-telegram-plane"></i></button>
-                    <input id="userSender" value="<?php echo $_SESSION['mainUserName'] ?>" hidden>
-                    <input id="userSender" value="<?php echo $username ?>" hidden>
                 </form>
 
 
@@ -52,27 +52,27 @@ require '../inc/connect.php';
                 <script>
                     $(document).ready(function() {
                         // Handle form submission
-
-                        var mainUsername = "<?php echo $_SESSION['mainUserName'] ?>";
-                        var username = "<?php echo $username ?>";
-
                         $('#message-form').submit(function(e) {
                             e.preventDefault(); // Prevent default form submission
-
-                            var message = $('input[type="text"]').val(); // Get the message from the input field
+                            
+                            let message = $('input[name="message"]').val(); // Get the message from the input field
+                            let mainUserName = $('input[name="mainUserName"]').val(); // Get the mainUserName value
+                            let userName = $('input[name="username"]').val(); // Get the username value
+                            console.log(message + " " + mainUserName + " " + userName)
 
                             // Make an AJAX request to insert the message into the database
                             $.ajax({
-                                url: 'insert_message.php', // Replace with the PHP file to handle database insertion
+                                url: 'insert_message.php',
                                 method: 'POST',
                                 data: {
                                     message: message,
-                                    mainUsername: mainUsername,
-                                    username: username
+                                    mainUsername: mainUserName,
+                                    username: userName
                                 },
                                 success: function(response) {
                                     // Call getMessagesFromDatabase function to update the chat
                                     getMessagesFromDatabase();
+                                    console.log("sucess");
                                 },
                                 error: function(xhr, status, error) {
                                     console.log(error); // Log any errors
@@ -89,8 +89,8 @@ require '../inc/connect.php';
                                     url: 'get_messages.php',
                                     method: 'GET',
                                     data: {
-                                        sender: $_SESSION['mainUserName'],
-                                        receiver: $username,
+                                        sender: mainUserName,
+                                        receiver: userName,
                                     },
                                 success: function(response) {
                                     // Update the chat with the retrieved messages

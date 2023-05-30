@@ -1,10 +1,14 @@
 <?php 
+include '../inc/connect.php';
+
+
+
 $sender = $_GET['sender'];
 $receiver = $_GET['receiver'];
 
 $query = "SELECT * 
-FROM messages
-WHERE (user_send = {$sender} AND user_receive = {$receiver})
+FROM chat_logs
+WHERE user_send = {$sender} AND user_receive = {$receiver}
 OR (user_send  = {$receiver} AND user_receive = {$sender}) ORDER BY timestamp";
 
 

@@ -39,6 +39,7 @@ require '../inc/connect.php';
                 </header>
                 <div class = "chat-box">
                     <?php
+                    
                         if($chat == "outgoing"){
                             echo "<div class = 'chat outgoing'>
                                         <div class = 'details'>

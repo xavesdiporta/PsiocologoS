@@ -1,6 +1,7 @@
 <?php
 
 require 'verify.php';
+include '../inc/connect.php';
 
 // Retrieve the message, mainUsername, and username values from the AJAX request
 $message = $_POST['message'];

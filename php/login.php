@@ -1,31 +1,50 @@
 <?php
-include '../inc/connect.php';
 
 session_start();
+include_once '../inc/connect.php';
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $stmt = mysqli_prepare($con, "SELECT password FROM users WHERE username = ?");
-      mysqli_stmt_bind_param($stmt, "s", $username);
-      mysqli_execute($stmt);
-      mysqli_stmt_bind_result($stmt, $hashedPassword);
-      mysqli_stmt_fetch($stmt);
-      if(password_verify($_POST['password'], $hashedPassword)){
-        echo "Login complete";
+$username = mysqli_real_escape_string($con, $_POST['username']);
+$password = mysqli_real_escape_string($con, $_POST['password']);
+
+if (!empty($username)) {
+    if (isset($_POST['anonymous'])) {
+        // Handle login as anonymous user
         $_SESSION['authenticated'] = true;
-        $_SESSION['mainUserName'] = $username; //introduzir nome que retorna da base dados para utilizar no website em geral
-        $_SESSION['mainUserStatus'] = "Active";//introduzir status que retorna da base dados para utilizar no website em geral
-        if($_SESSION['authenticated'] = true){
-          mysqli_stmt_close($stmt); // Close the previous statement
-          $sql = "UPDATE users SET status = 'Active' WHERE username = '$username'";
-          $query = mysqli_query($con, $sql);
-        }
+        $_SESSION['mainUserName'] = 'Anonymous';
+        $_SESSION['mainUserStatus'] = 'Active';
         header("Location: users.php");
-      }
-      else{
-        include 'login.html';
-        echo "<p style='font-size: 17px;font-weight: 400;border-radius: 5px; border: 2px solid black; width: 175px; height: 50px;margin:15px; color: white; background : rgb(51, 51, 51); text-align: center;padding-top: 12px; margin-bottom: 30px;
-        '>ERROR LOGGING IN</p>";
-      }
-
-?>
+        exit;
+    } else {
+        // Handle login with username and password
+        if (!empty($password)) {
+            $stmt = mysqli_prepare($con, "SELECT password FROM users WHERE username = ?");
+            mysqli_stmt_bind_param($stmt, "s", $username);
+            mysqli_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $hashedPassword);
+            mysqli_stmt_fetch($stmt);
+            if (password_verify($password, $hashedPassword)) {
+                echo "Login complete";
+                $_SESSION['authenticated'] = true;
+                $_SESSION['mainUserName'] = $username;
+                $_SESSION['mainUserStatus'] = "Active";
+                mysqli_stmt_close($stmt);
+                $sql = "UPDATE users SET status = 'Active' WHERE username = '$username'";
+                $query = mysqli_query($con, $sql);
+                header("Location: users.php");
+                exit;
+            } else {
+                include 'login.html';
+                echo "<p style='font-size: 17px;font-weight: 400;border-radius: 5px; border: 2px solid black; width: 175px; height: 50px; color: white; background : red; text-align: center;padding-top: 12px; margin-bottom: 30px;'>ERROR LOGGING IN</p>";
+                exit;
+            }
+        } else {
+            include 'login.html';
+            echo "<p style='font-size: 17px;font-weight: 400;border-radius: 5px; border: 2px solid black; width: 175px; height: 50px; color: white; background : red; text-align: center;padding-top: 12px; margin-bottom: 30px;'>Password is required</p>";
+            exit;
+        }
+    }
+} else {
+    include 'login.html';
+    echo "<p style='font-size: 17px;font-weight: 400;border-radius: 5px; border: 2px solid black; width: 175px; height: 50px; color: white; background : red; text-align: center;padding-top: 12px; margin-bottom: 30px;'>Username is required</p>";
+    exit;
+}

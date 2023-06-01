@@ -4,10 +4,8 @@ session_start();
 include_once '../inc/connect.php';
 
 
-if (!empty($_POST['username']) || isset($_POST['anonymous'])) {
     if (isset($_POST['anonymous'])) {
         // Handle login as anonymous user
-        
         //get data from json file
         $jsonData = file_get_contents('randomNames.json');
         //convert data to PHP array
@@ -21,7 +19,14 @@ if (!empty($_POST['username']) || isset($_POST['anonymous'])) {
         $_SESSION['mainUserStatus'] = 'Active';
         header("Location: users.php");
         exit;
-    } else {
+    }
+    else{
+        include 'login.html';
+        echo "<p style='font-size: 17px;font-weight: 400;border-radius: 5px; border: 2px solid black; width: 175px; height: 50px; color: white; background : red; text-align: center;padding-top: 12px; margin-bottom: 30px;'>Anonymous button not set</p>";
+    }
+
+
+    if(!empty($_POST['username'])){
         // Handle login with username and password
         $password = mysqli_real_escape_string($con, $_POST['password']);
         $username = mysqli_real_escape_string($con, $_POST['username']);
@@ -55,9 +60,8 @@ if (!empty($_POST['username']) || isset($_POST['anonymous'])) {
             exit;
         }
     }
-} else {
-    //username is empty
-    include 'login.html';
-    echo "<p style='font-size: 17px;font-weight: 400;border-radius: 5px; border: 2px solid black; width: 175px; height: 50px; color: white; background : red; text-align: center;padding-top: 12px; margin-bottom: 30px;'>Username is required</p>";
-    exit;
-}
+    else{
+        include 'login.html';
+        echo "<p style='font-size: 17px;font-weight: 400;border-radius: 5px; border: 2px solid black; width: 175px; height: 50px; color: white; background : red; text-align: center;padding-top: 12px; margin-bottom: 30px;'>Username is empty</p>";
+    }
+

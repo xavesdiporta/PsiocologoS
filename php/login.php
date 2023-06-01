@@ -6,11 +6,19 @@ include_once '../inc/connect.php';
 $username = mysqli_real_escape_string($con, $_POST['username']);
 $password = mysqli_real_escape_string($con, $_POST['password']);
 
-if (!empty($username)) {
+if (!empty($username || isset($_POST['anonymous']))) {
     if (isset($_POST['anonymous'])) {
         // Handle login as anonymous user
+
+        //get data from json file
+        $jsonData = file_get_contents('randomNames.json');
+        //convert data to PHP array
+        $data = json_decode($jsonData, true);
+        $lengthData = count($data['myArray']);
+        $randIndex = rand(0,$lengthData);
+
         $_SESSION['authenticated'] = true;
-        $_SESSION['mainUserName'] = 'Anonymous';
+        $_SESSION['mainUserName'] = $data['myArray'][$randIndex]['name'];
         $_SESSION['mainUserStatus'] = 'Active';
         header("Location: users.php");
         exit;

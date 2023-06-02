@@ -1,0 +1,20 @@
+{
+    "myArray": [
+        {
+            "name": "anonymous1",
+            "password": "teste123"
+        },
+        {
+            "name": "anonymous2",
+            "password": "teste123"
+        },
+        {
+            "name": "anonymous3",
+            "password": "teste123"
+        },
+        {
+            "name": "anonymous4",
+            "password": "teste123"
+        }
+    ]
+}

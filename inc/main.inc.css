@@ -1,6 +1,6 @@
 
                             /*!         Main.html - CSS Part         */
-                            
+
     *
     {
         margin : 0 ;
@@ -26,7 +26,7 @@
 
     .wrapperUsers
     {
-        width : 514.24px ;
+        width : 450px ;
         border-radius : 16px ;
         box-shadow : 0 0 128px 0 rgba(0,0,0,0.1), 0 32px 64px -48px rgba(0,0,0,0.5) ;
         background : #fffaff ;
@@ -215,9 +215,8 @@
 
     .users header .content img
     {
-        height : 70px ;
-        width : 70px ;
-        border-radius : 36px;
+        height : 50px ;
+        width : 50px ;
     }
 
     .users header .content .details
@@ -246,11 +245,9 @@
         margin : 20px 0 ;
         padding : 0px 15px ;
         display : flex ;
-        border-radius : 15px ;
         position : relative ; 
         align-items : center ;
         justify-content : space-between ;
-        background-color : #e9e9e9 ;
     }
 
     .users .search .text
@@ -287,7 +284,7 @@
         border : none ;
         outline : none ;
         color : #333;
-        background-color : #e9e9e9 ;
+        background : #e9e9e9 ;
         border-radius : 0 5px 5px 0 ;
         cursor : pointer ;
         transition : all 0.3s ease ;
@@ -416,7 +413,6 @@
     .chat-box
     {
         height : 500px ;
-        width : 100% ;
         background : #fffaff ;
         padding : 10px 30px 20px 30px ;
         overflow-y: auto;

@@ -13,7 +13,7 @@ require '../inc/connect.php';
         <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Psicologo da Mosca - Login</title>
-        <link rel = "stylesheet" href = "../inc/main.inc.css">
+        <link rel = "stylesheet" href = "../inc/css.css">
         <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     </head>
     
@@ -31,7 +31,6 @@ require '../inc/connect.php';
         <div class = "wrapperChat">
             <section class = "chat-area">
                 <header>
-                    <a href="chat.php" class = "back-icon"><i class = "fas fa-arrow-left"></i></a>
                     <img src="<?php echo "../inc/images/".$username.".jpg"; ?>" alt="">
                     <div class = "details">
                         <span id="username"><?php echo $username ?></span>

@@ -12,7 +12,7 @@ require "../inc/connect.php";
         <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Psicologo da Mosca - Login</title>
-        <link rel = "stylesheet" href = "../inc/main.inc.css">
+        <link rel = "stylesheet" href = "../inc/css.css">
         <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     </head>
 
@@ -26,8 +26,17 @@ require "../inc/connect.php";
                     <div class = "content">
                         <img src = "<?php echo "../inc/images/".$_SESSION['mainUserName'].".jpg"; ?>" alt = "">
                         <div class = "details">
-                            <span><?php echo $_SESSION['mainUserName']?> </span>
-                            <p> <?php echo $_SESSION['mainUserStatus']?> </p>
+                            <?php
+                            if($_SESSION['mainUserStatus'] == "Active")
+                            {
+                                echo "<span>" . $_SESSION['mainUserName'] . "</span>";
+                                echo "<p>" . $_SESSION['mainUserStatus'] ."</p>";
+                            }
+                            elseif($_SESSION['mainUserStatus'] == "Anonymous")
+                            {
+                                echo "<span>" . $_SESSION['mainUserStatus'] . "</span>";
+                            }
+                            ?>
                         </div>
                     </div>
                     <a href = "logout.php" class = "logout">Logout</a>
@@ -53,13 +62,24 @@ require "../inc/connect.php";
                             echo '</div>';
                             echo '<div class="status-dot"><i class="fas fa-circle"></i></div>';
                             echo '</a>';
+                        }elseif($row['status'] == "Anonymous")
+                        {
+                            echo '<a href="#" onclick="openChat(\'' . $row['username']. ',' . $row['status'] . "," . $_SESSION['mainUserName'] . '\')">';
+                            echo '<div class="content">';
+                            echo '<img src="../inc/images/'. $row['username'] .'.jpg" alt="">';
+                            echo '<div class="details">';
+                            echo '<span>' . $row['status'] . '</span>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '<div class="status-dot"><i class="fas fa-circle"></i></div>';
+                            echo '</a>';
                         }
                     }
                 ?>
                 </div>
             </section>
         </div>
-        <div id="chatContent" style="width: 50%"></div>
+        <div id="chatContent"></div>
         <script src = "../inc/users.js"></script>
 
     </body>

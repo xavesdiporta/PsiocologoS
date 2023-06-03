@@ -189,6 +189,7 @@
                         
                                                 /*!   Users.html - CSS Part   */
                         
+
                             .users
                             {
                                 padding : 25px 30px ;
@@ -217,8 +218,9 @@
                         
                             .users header .content img
                             {
-                                height : 50px ;
-                                width : 50px ;
+                                height: 55px;
+                                width: 55px;
+                                border-radius: 100%;
                             }
                         
                             .users header .content .details
@@ -346,8 +348,9 @@
                         
                             .users-list a .content img
                             {
-                                height : 40px ;
-                                width : 40px ;
+                                height: 45px;
+                                width: 45px;
+                                border-radius: 55%;
                             }
                         
                             .users-list a .content p
@@ -387,6 +390,21 @@
                                 width : 100% ;
                             }
 
+                            .img-logo {
+                                display : block ;
+                                margin : 0 auto ;
+                                padding-top : 10% ;
+                                max-width : 30% ; 
+                                border-radius : 50% ;
+                            }
+
+                            .text-center {
+                                text-align: center;
+                                padding-top : 2% ;
+                                font-size: 89%; /* Adjust the font size as per your preference */
+                                color: #333; /* Adjust the color as per your preference */
+                            }
+
                             .chat-area
                             {
                                 position : relative ;
@@ -410,8 +428,9 @@
                         
                             .chat-area header img
                             {
-                                height : 45px ;
-                                width : 45px ;
+                                height : 50px ;
+                                width : 50px ;
+                                border-radius : 55% ;
                                 margin : 0 15px ;
                             }
                         

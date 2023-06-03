@@ -62,7 +62,8 @@ require "../inc/connect.php";
                             echo '</div>';
                             echo '<div class="status-dot"><i class="fas fa-circle"></i></div>';
                             echo '</a>';
-                        }elseif($row['status'] == "Anonymous")
+                        }
+                        elseif($row['status'] == "Anonymous")
                         {
                             echo '<a href="#" onclick="openChat(\'' . $row['username']. ',' . $row['status'] . "," . $_SESSION['mainUserName'] . '\')">';
                             echo '<div class="content">';
@@ -75,11 +76,17 @@ require "../inc/connect.php";
                             echo '</a>';
                         }
                     }
+
                 ?>
                 </div>
             </section>
         </div>
-        <div id="chatContent"></div>
+        <div id="chatContent">
+            <img class="img-logo" src="../img/logo_all.jpeg">
+            <p class="text-center">É um espaço para ouvir, aceitar e esclarecer respeitando-te. <br>
+                Numa altura da vida em que tudo está a mudar, o teu corpo, personalidade, interesses e relacionamentos.</p>
+        </div>
+
         <script src = "../inc/users.js"></script>
 
     </body>

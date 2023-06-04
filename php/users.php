@@ -75,7 +75,18 @@ require "../inc/connect.php";
                             echo '<div class="status-dot"><i class="fas fa-circle"></i></div>';
                             echo '</a>';
                         }
+
                     }
+
+                            echo '<a href="#" onclick="openChatGeral()">';
+                            echo '<div class="content">';
+                            echo '<img src="../img/disocrd.png" alt="">';
+                            echo '<div class="details">';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</a>';
+
+                            
 
                 ?>
                 </div>

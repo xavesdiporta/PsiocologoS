@@ -6,7 +6,10 @@ require '../inc/connect.php';
 $sender = $_GET['sender'];
 $receiver = $_GET['receiver'];
 
-$query = "SELECT * FROM chat_logs WHERE user_send = '$sender' && user_receive != '$sender' ORDER BY timestamp";
+$query = "SELECT * 
+FROM chat_logs
+WHERE user_send = '$sender' AND user_receive = '$receiver'
+OR (user_send  = '$receiver' AND user_receive = '$sender') ORDER BY timestamp";
 
 
 

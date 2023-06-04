@@ -31,7 +31,7 @@ require '../inc/connect.php';
         <div class = "wrapperChat">
             <section class = "chat-area">
                 <header>
-                    <img src="<?php echo "../inc/images/".$username.".jpg"; ?>" alt="">
+                    <img src="<?php echo "../img/disocrd.png"?>" alt="">
                     <div class = "details">
                         <span id="username"><?php echo $username ?></span>
                         <p id="status"><?php echo $status ?></p>
@@ -65,7 +65,7 @@ require '../inc/connect.php';
                         
                         // Make an AJAX request to insert the message into the database
                         $.ajax({
-                            url: 'insert_message.php',
+                            url: 'insert_all_message.php',
                         method: 'POST',
                         data: {
                             message: message,

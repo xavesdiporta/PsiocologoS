@@ -26,7 +26,7 @@ if($result)
                         </div>
                         </div>';
             }
-            else
+            elseif($row['user_receive'] =! $_SESSION['mainUserName'])
             {
                 echo '<div class="chat incoming">
                         <img src="../inc/images/'.$receiver.'.jpg" alt="">

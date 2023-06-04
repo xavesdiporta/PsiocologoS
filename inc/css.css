@@ -9,6 +9,7 @@
                                 text-decoration : none ; 
                                 font-family : 'Poppins' , sans-serif ;
                             }
+
                             #hero{
                                 display: flex;
                                 min-height : 100vh ;
@@ -517,6 +518,7 @@
                             .chat-area .typing-area
                             {
                                 padding : 18px 30px ;
+                                width : 145% ;
                                 display : flex ;
                                 justify-content : space-between ;
                             }

@@ -29,7 +29,7 @@ function openChat(user,status){
 }
 
 
-function openChatGeral(user,status) {
+function openChatGeral(user) {
     // Create an iframe element
     var iframe = document.createElement('iframe');
     iframe.src = 'chat_geral.php';

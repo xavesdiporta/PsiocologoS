@@ -78,7 +78,7 @@ require "../inc/connect.php";
 
                     }
 
-                            echo '<a href="#" onclick="openChatGeral()">';
+                            echo '<a href="#" onclick="openChatGeral(\'' . 'Geral'. ',' . $row['status'] . "," . $_SESSION['mainUserName'] . '\')">';
                             echo '<div class="content">';
                             echo '<img src="../img/disocrd.png" alt="">';
                             echo '<div class="details">';

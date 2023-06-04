@@ -12,7 +12,6 @@ WHERE user_send = '$sender' AND user_receive = '$receiver'
 OR (user_send  = '$receiver' AND user_receive = '$sender') ORDER BY timestamp";
 
 
-
 $result = mysqli_query($con, $query);
 if($result)
 {

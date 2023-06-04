@@ -1,12 +1,15 @@
 <?php 
+require 'verify.php';
 require '../inc/connect.php';
 
-
+$_SESSION['mainUserName'] = $_GET['sender'];
 
 $sender = $_GET['sender'];
-$receiver = $_GET['receiver'];
+$receiver = 'Geral';
 
-$query = "SELECT * FROM all_chat_logs WHERE user_send = '$sender' || user_receive != '$sender' ORDER BY timestamp";
+$query = "SELECT * 
+          FROM chat_logs
+          WHERE  user_receive = 'Geral' ORDER BY timestamp";
 
 
 $result = mysqli_query($con, $query);
@@ -15,7 +18,7 @@ if($result)
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result))
         {
-            if($row['user_send'] == $sender)
+            if($row['user_send'] == $_SESSION['mainUserName'])
             {
                 echo '<div class="chat outgoing">
                         <div class="details">

@@ -19,10 +19,10 @@ require '../inc/connect.php';
     
     
     <?php 
-    $userInfo = $_GET['username'];
-    $userInfoArray = explode(",", $userInfo);
-    $username = $userInfoArray[0];
-    $status = $userInfoArray[1];
+    //$userInfo = $_GET['username'];
+    //$userInfoArray = explode(",", $userInfo);
+    //$username = $userInfoArray[0];
+    //$status = $userInfoArray[1];
 
     ?>
     <!-- body things -->
@@ -33,8 +33,7 @@ require '../inc/connect.php';
                 <header>
                     <img src="<?php echo "../img/disocrd.png"?>" alt="">
                     <div class = "details">
-                        <span id="username"><?php echo $username ?></span>
-                        <p id="status"><?php echo $status ?></p>
+                        <span id="username">Geral Chat</span>
                     </div>
                 </header>
                 <div class = "chat-box">
@@ -43,7 +42,7 @@ require '../inc/connect.php';
                     <form action="#" class="typing-area" id="message-form" method="post">
                         <input type="text" name="message" placeholder="Type a message here...">
                         <input type="hidden" name="mainUserName" value="<?php echo $_SESSION['mainUserName']; ?>">
-                        <input type="hidden" name="username" value="<?php echo $username; ?>">
+                        <input type="hidden" name="username" value="<?php echo "Geral"; ?>">
                         <button type="submit"><i class="fab fa-telegram-plane"></i></button>
                     </form>
                     

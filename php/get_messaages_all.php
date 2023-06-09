@@ -8,8 +8,9 @@ $sender = $_GET['sender'];
 $receiver = 'Geral';
 
 $query = "SELECT * 
-          FROM chat_logs
-          WHERE  user_receive = 'Geral' ORDER BY timestamp";
+FROM all_chat_logs
+WHERE user_send = '$sender' AND user_receive = 'Geral'
+OR user_send NOT LIKE '$sender' ORDER BY timestamp";
 
 
 $result = mysqli_query($con, $query);
@@ -26,10 +27,10 @@ if($result)
                         </div>
                         </div>';
             }
-            elseif($row['user_receive'] =! $_SESSION['mainUserName'])
+            elseif($row['user_send'] != $_SESSION['mainUserName'])
             {
                 echo '<div class="chat incoming">
-                        <img src="../inc/images/'.$receiver.'.jpg" alt="">
+                        <img src="../inc/images/'.$sender.'.jpg" alt="">
                         <div class="details">
                             <p>'. $row['message'] .'</p>
                         </div>

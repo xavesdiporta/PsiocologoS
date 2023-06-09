@@ -13,7 +13,7 @@ $time = date('Y-m-d H:i:s', time());
 // Implement your database insertion logic accordingly
 
 // Assuming you have already established a database connection
-$query = "INSERT INTO chat_logs (user_send, user_receive, message, timestamp) VALUES ('$mainUserName', '$username', '$message', '$time')";
+$query = "INSERT INTO all_chat_logs (user_send, user_receive, message, timestamp) VALUES ('$mainUserName', '$username', '$message', '$time')";
 $result = mysqli_query($con, $query);
 
 // Check if the query was successful

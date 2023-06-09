@@ -19,10 +19,20 @@ require '../inc/connect.php';
     
     
     <?php 
-    //$userInfo = $_GET['username'];
-    //$userInfoArray = explode(",", $userInfo);
-    //$username = $userInfoArray[0];
-    //$status = $userInfoArray[1];
+    $userInfo = $_GET['username'] ?? ''; // Set a default empty value if $_GET['username'] is not set
+    $userInfoArray = explode(",", $userInfo);
+    
+    if (count($userInfoArray) >= 1) {
+        $username = $userInfoArray[0];
+    } else {
+        // Handle the case when the array doesn't have enough elements
+        // You can set default values or display an error message
+        $username = '';
+        $status = '';
+        // Display an error message or redirect to an error page
+        echo "Invalid username format!";
+        exit;
+    }
 
     ?>
     <!-- body things -->

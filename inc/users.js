@@ -29,10 +29,10 @@ function openChat(user,status){
 }
 
 
-function openChatGeral(user) {
+function openChatGeral(user,status) {
     // Create an iframe element
     var iframe = document.createElement('iframe');
-    iframe.src = 'chat_geral.php';
+    iframe.src = 'chat_geral.php?username=' + encodeURIComponent(user) + "&status=" + encodeURIComponent(status);
     iframe.style.width = '100%';
     iframe.style.height = '100%';
     iframe.style.border = 'none';

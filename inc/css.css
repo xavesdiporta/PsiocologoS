@@ -317,6 +317,7 @@
                             {
                                 max-height : 350px ;
                                 overflow-y : auto ;
+                                padding-top: 5px;
                             }
                         
                             .users-list::-webkit-scrollbar {
@@ -383,6 +384,13 @@
                                 color : #ccc ;
                             }
                         
+
+                            /*.chatGeral a
+                            {
+                                background-color : #ff0000 ;
+                                border : 1px solid #000000 ;
+                                margin-bottom: 25px;
+                            }*/
                         
                                                     /*!   Chat.html - CSS Part   */
                         

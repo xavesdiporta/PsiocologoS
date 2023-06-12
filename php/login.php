@@ -22,6 +22,7 @@ if(!empty($username) || !empty($password))
                 $_SESSION['authenticated'] = true;
                 $_SESSION['mainUserName'] = $username;
                 $_SESSION['mainUserStatus'] = "Anonymous";
+                $_SESSION['hashedPassword'] = $hashedPassword;
                 mysqli_stmt_close($stmt);
                 $sql = "UPDATE users SET status = 'Anonymous' WHERE username = '$username'";
                 $query = mysqli_query($con, $sql);

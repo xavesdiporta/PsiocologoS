@@ -106,7 +106,7 @@ require '../inc/connect.php';
                     });
                 }
                 getMessagesFromDatabase();
-                setInterval(getMessagesFromDatabase, 8000);
+                setInterval(getMessagesFromDatabase, 1500);
                 });
 
 

@@ -41,13 +41,20 @@ require "../inc/connect.php";
                     </div>
                     <a href = "logout.php" class = "logout">Logout</a>
                 </header>
-                <div class = "search">
-                    <span class = "text">Select an user to start chat</span>
-                    <input type = "text" placeholder = "Enter name to search...">
-                    <button><i class = "fas fa-search"></i></button>
-                </div>
                 <div class = "users-list">
                 <?php
+
+                    echo '<div id="chatGeral">';     
+                    echo '<a href="#" onclick="openChatGeral(\'' . 'Geral' . "," . $_SESSION['mainUserName'] . '\')">';
+                    echo '<div class="content">';
+                    echo '<img src="../img/disocrd.png" alt="">';
+                    echo '<div class="details">';
+                    echo '<span>Geral Chat </span>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</a>';
+                    echo '</div>';
+
                     $query = "SELECT * FROM users";
                     $result = mysqli_query($con, $query);
                     while($row = mysqli_fetch_assoc($result)){
@@ -63,7 +70,7 @@ require "../inc/connect.php";
                             echo '<div class="status-dot"><i class="fas fa-circle"></i></div>';
                             echo '</a>';
                         }
-                        elseif($row['status'] == "Anonymous")
+                        elseif($row['status'] == "Anonymous" && !($row['password'] ==$_SESSION['hashedPassword'] ))
                         {
                             echo '<a href="#" onclick="openChat(\'' . $row['username']. ',' . $row['status'] . "," . $_SESSION['mainUserName'] . '\')">';
                             echo '<div class="content">';
@@ -76,19 +83,7 @@ require "../inc/connect.php";
                             echo '</a>';
                         }
 
-                    }
-
-                            echo '<a href="#" onclick="openChatGeral(\'' . 'Geral' . "," . $_SESSION['mainUserName'] . '\')">';
-                            echo '<div class="content">';
-                            echo '<img src="../img/disocrd.png" alt="">';
-                            echo '<div class="details">';
-                            echo '<span>Geral Chat </span>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</a>';
-
-                            
-
+                    }                        
                 ?>
                 </div>
             </section>

@@ -7,7 +7,7 @@ $_SESSION['mainUserName'] = $_GET['sender'];
 $sender = $_GET['sender'];
 $receiver = 'Geral';
 
-$query = "SELECT * 
+$query = "SELECT DISTINCT * 
 FROM all_chat_logs
 WHERE user_send = '$sender' AND user_receive = 'Geral'
 OR user_send NOT LIKE '$sender' ORDER BY timestamp";
@@ -30,11 +30,11 @@ if($result)
             elseif($row['user_send'] != $_SESSION['mainUserName'])
             {
                 echo '<div class="chat incoming">
-                        <img src="../inc/images/'.$sender.'.jpg" alt="">
-                        <div class="details">
-                            <p>'. $row['message'] .'</p>
-                        </div>
-                        </div>';
+                <img src="../inc/images/'.$row['user_send'].'.jpg" alt="">
+                <div class="details">
+                    <p>'. $row['message'] .'</p>
+                </div>
+                </div>';
             }
         }
     }else{

@@ -91,7 +91,8 @@
                         
                             .form form .name-details
                             {
-                                display : flex ;
+                                /*display : flex ;*/
+                                width : 100% ;
                             }
                         
                             .form form .name-details .field:first-child
@@ -101,7 +102,7 @@
                         
                             .form form .name-details .field:last-child
                             {
-                                margin-left : 10px ;
+                                margin-left : 0px ;
                             }
                         
                             .form form .field

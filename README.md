@@ -10,3 +10,9 @@ Our goal its to create and develop a new way to professional businesses to comun
 much easiar way.
 
 
+# Example
+
+![image](https://github.com/T3nco/PsiocologoS/assets/86982363/e7379962-9c80-40c5-a029-9e11db8b5cf9)
+
+
+

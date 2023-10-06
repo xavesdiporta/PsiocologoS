@@ -12,7 +12,8 @@ much easiar way.
 
 # Example
 
-![image](https://github.com/T3nco/PsiocologoS/assets/86982363/3d59bb1e-79ca-4c25-a473-ccd26bd95790)
+![image](https://github.com/T3nco/PsiocologoS/assets/86982363/61e082ee-df12-4088-a0b4-f86fcdcdba81)
+
 
 
 

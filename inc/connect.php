@@ -1,8 +1,9 @@
+
 <?php
-require 'vendor/autoload.php';
 
-use Google\Cloud\Firestore\FirestoreClient;
+    $dbServername = "localhost";
+    $dbUsername = "root";
+    $dbPassword = "";
+    $dbName = "chat";
 
-$firestore = new FirestoreClient([
-    'keyFilePath' => 'path/to/your/firebase-credentials.json',
-]);
+    $con = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);

@@ -89,7 +89,7 @@ require "../inc/connect.php";
             </section>
         </div>
         <div id="chatContent">
-            <img class="img-logo" src="../img/logo_all.jpeg">
+            <img class="img-logo" src="../img/logo.png">
             <p class="text-center">É um espaço para ouvir, aceitar e esclarecer respeitando-te. <br>
                 Numa altura da vida em que tudo está a mudar, o teu corpo, personalidade, interesses e relacionamentos.</p>
         </div>

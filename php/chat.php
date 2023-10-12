@@ -14,7 +14,8 @@ require '../inc/connect.php';
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Psicologo da Mosca - Login</title>
         <link rel = "stylesheet" href = "../inc/css.css">
-        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     </head>
     
     
